@@ -39,4 +39,10 @@ public class CheckingAccountPage {
     public WebElement resetButton;
     @FindBy(id = "new-account-error-alert")
     public WebElement newAccountErrorAlert;
+
+    @FindBy (id = "transactionTable")
+    public WebElement transactionTable;
 }
+
+
+
