@@ -12,6 +12,7 @@ public class AccountInformationSteps {
     WebDriver driver;
     LogInPage logInPage = new LogInPage();
     MainPage mainPage = new MainPage();
+// just to see if git is working
 
     @When("^user logs in with username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void user_logs_in_with_username_and_password(String userName, String password){
