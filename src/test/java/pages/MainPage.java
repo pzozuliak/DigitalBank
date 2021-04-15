@@ -38,6 +38,11 @@ public class MainPage {
     public WebElement UserAvatarImage;
     @FindBy(xpath = "//a[contains(@href,'logout')]")
     public WebElement LogoutButton;
+    @FindBy(id = "view-savings-menu-item")
+    public WebElement viewSavingsButton;
+    @FindBy(id = "new-savings-menu-item")
+    public WebElement newSavingsButton;
+
 
 
     public void logout() {
