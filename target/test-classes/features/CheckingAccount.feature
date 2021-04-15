@@ -8,7 +8,7 @@ Feature: Checking account verification
 
 
   Scenario: Creating new checking account
-    Then user creates checking account with account name "main" and deposit amount "1000"
+    Then user creates checking account with account name "TEST Account" and deposit amount "5000"
     And user should be able to view checking account info
     And verify all information should match the entered values
 

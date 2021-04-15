@@ -1,13 +1,13 @@
 package step_defs;
 
 import com.github.javafaker.Faker;
-import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
+
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.it.Ma;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,7 +17,6 @@ import pages.RegistrationPage;
 import utilities.Driver;
 import utilities.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 import java.util.Map;
 
