@@ -1,10 +1,11 @@
 Feature: New Checking Bank Account operations
 
   Background:
-    When user logs in with username "jsmith@demo.io" and password "Demo123!"
+    When user navigates to Digital Bank Wep Application site
+    When user logs in with username "pasquale.satterfield@hotmail.com" and password "Password123"
     When user clicks on CheckingDropdown
-    And user clicks New Checking button
-    Then user should be on "http://3.131.35.165:8080/bank/account/checking-add" page
+    #And user clicks New Checking button
+    #Then user should be on "http://3.131.35.165:8080/bank/account/checking-add" page
 
   Scenario: Redirecting user to the New Checking tab
 
@@ -37,10 +38,14 @@ Feature: New Checking Bank Account operations
   Scenario: Submit button validation
     Then user should be able to see Submit button
     When user clicks Submit button
-    And user should be redirected to the "http://3.131.35.165:8080/bank/account/checking-view" to view checking account
-    And checking account information should be added to the DB
+
 
   Scenario:Reset button validation
     Then user should be able to see Reset button
     When user clicks Reset button
     Then user should be able to see all pesonal info fields are reseted to default state
+
+    Scenario: DB new Checking account validation
+     And user clicks on View Checking Account Button
+      And user should be redirected to the "http://3.131.35.165:8080/bank/account/checking-view" to view checking account
+      And checking account information should be added to the DB
