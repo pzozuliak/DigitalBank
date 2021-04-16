@@ -21,3 +21,4 @@ Feature: Functionalities
     And User selects deposit account as "Checking account"
     When User submits a deposit with "20.50$" amount
     Then Verify deposit amount has been applied
+##basic comment
