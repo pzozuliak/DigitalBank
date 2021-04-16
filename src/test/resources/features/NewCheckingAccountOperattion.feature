@@ -37,8 +37,8 @@ Feature: New Checking Bank Account operations
   Scenario: Submit button validation
     Then user should be able to see Submit button
     When user clicks Submit button
-    Then user should be able to create a new Account
-    And user should be redirected to the page to view checking account
+    And user should be redirected to the "http://3.131.35.165:8080/bank/account/checking-view" to view checking account
+    And checking account information should be added to the DB
 
   Scenario:Reset button validation
     Then user should be able to see Reset button

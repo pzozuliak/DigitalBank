@@ -201,27 +201,19 @@ public class CheckingAccountPageDefs {
 
     @Then("^user should be able to see Submit button$")
     public void user_should_be_able_to_see_Submit_button()  {
-        // Write code here that turns the phrase above into concrete actions
+       Assert.assertTrue(checkingAccountPage.submitButton.isDisplayed());
 
     }
 
     @When("^user clicks Submit button$")
     public void user_clicks_Submit_button()  {
-        // Write code here that turns the phrase above into concrete actions
+        checkingAccountPage.submitButton.click();
 
     }
 
-    @Then("^user should be able to create a new Account$")
-    public void user_should_be_able_to_create_a_new_Account()  {
-        // Write code here that turns the phrase above into concrete actions
 
-    }
 
-    @Then("^user should be redirected to the page to view checking account$")
-    public void user_should_be_redirected_to_the_page_to_view_checking_account()  {
-        // Write code here that turns the phrase above into concrete actions
 
-    }
 
     @Then("^user should be able to see Reset button$")
     public void user_should_be_able_to_see_Reset_button()  {
@@ -242,4 +234,16 @@ public class CheckingAccountPageDefs {
     }
 
 
+    @And("^checking account information should be added to the DB$")
+    public void checkingAccountInformationShouldBeAddedToTheDB() {
+
+
+
+    }
+
+    @And("^user should be redirected to the \"([^\"]*)\" to view checking account$")
+    public void userShouldBeRedirectedToTheToViewCheckingAccount(String actualURl)  {
+        String realURL = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(actualURl,realURL);
+    }
 }

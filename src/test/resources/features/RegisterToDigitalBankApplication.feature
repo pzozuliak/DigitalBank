@@ -41,3 +41,4 @@ Feature: Register to Digital Bank application
     And click Agree the terms and policy
     And user clicks register button
     Then user should be displayed with the message "Registration Successful. Please Login."
+    Then verify the user has been aded to the digital_bank DB

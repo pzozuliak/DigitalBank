@@ -14,9 +14,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.LogInPage;
 import pages.RegistrationPage;
+import utilities.DBUtils;
 import utilities.Driver;
 import utilities.User;
 
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +27,8 @@ public class RegisterToDigitalBankAppStep {
 
     LogInPage logInPage = new LogInPage();
     RegistrationPage registrationPage = new RegistrationPage();
+    String emailNumber;
+    String ssnNumber;
 
     @When("^User navigate to digital bank application page$")
     public void user_navigate_to_digital_bank_application_page() throws Throwable {
@@ -73,10 +77,10 @@ public class RegisterToDigitalBankAppStep {
         Thread.sleep(3000);
         registrationPage.dateOfBirthField.sendKeys(userInfo.get(0).getDateOfBirth());
         Faker faker = new Faker();
-        String ssnNumber = faker.idNumber().ssnValid();
+        ssnNumber = faker.idNumber().ssnValid();
 
         registrationPage.socialSecurityNumber.sendKeys(ssnNumber);
-        String emailNumber = faker.internet().emailAddress();
+        emailNumber = faker.internet().emailAddress();
 
         registrationPage.emailAddressField.sendKeys(emailNumber);
         registrationPage.passwordField.sendKeys(userInfo.get(0).getPassword());
@@ -122,4 +126,26 @@ public class RegisterToDigitalBankAppStep {
     }
 
 
+    @Then("^verify the user has been aded to the digital_bank DB$")
+    public void verifyTheUserHasBeenAdedToTheDigital_bankDB() {
+        ResultSet result = DBUtils.query("SELECT *\n" +
+                "FROM user_profile\n" +
+                "WHERE email_address = '"+emailNumber+"'");
+        List<Map<String, Object>> table = DBUtils.convertResultSet(result);
+       String ssn = "";
+        for (Map<String, Object> map: table) {
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                String columnName = entry.getKey();
+                Object data = entry.getValue();
+
+                if (columnName.equals("ssn")){
+                    ssn = data.toString();
+
+                }
+            }
+
+        }
+        Assert.assertEquals(ssn,ssnNumber);
+        Assert.assertTrue(table.size() == 1 );
+    }
 }
