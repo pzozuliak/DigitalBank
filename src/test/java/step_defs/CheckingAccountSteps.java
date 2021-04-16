@@ -1,8 +1,8 @@
 package step_defs;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.it.Ma;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,7 @@ public class CheckingAccountSteps {
 
     WebDriver driver;
     MainPage mainPage = new MainPage();
-    CheckingAccountPage CheckingAccPage = new CheckingAccountPage();
+    CheckingAccountPage checkingAccountPage = new CheckingAccountPage();
 
     @When("^user navigates to Digital Bank Wep Application site$")
     public void user_navigates_to_Digital_Bank_Wep_Application_site() {
@@ -38,11 +38,11 @@ public class CheckingAccountSteps {
     @Then("^user creates checking account with account name \"([^\"]*)\" and deposit amount \"([^\"]*)\"$")
     public void user_creates_checking_account_with_account_name_and_deposit_amount(String accountName, String depositAmount){
 mainPage.newCheckingButton.click();
-CheckingAccPage.standardCheckingRadioButton.click();
-CheckingAccPage.IndividualRadioButton.click();
-CheckingAccPage.accountNameInputField.sendKeys(accountName);
-CheckingAccPage.initialDepositAmount.sendKeys(depositAmount);
-CheckingAccPage.submitButton.click();
+checkingAccountPage.standardCheckingRadioButton.click();
+checkingAccountPage.IndividualRadioButton.click();
+checkingAccountPage.accountNameInputField.sendKeys(accountName);
+checkingAccountPage.initialDepositAmount.sendKeys(depositAmount);
+checkingAccountPage.submitButton.click();
     }
 
     @Then("^user should be able to view checking account info$")
@@ -100,6 +100,11 @@ CheckingAccPage.submitButton.click();
 
     @Then("^verify transaction history on activated account is displayed$")
     public void verify_transaction_history_on_activated_account_is_displayed() {
-        Assert.assertTrue(CheckingAccPage.transactionTable.isDisplayed());
+        Assert.assertTrue(checkingAccountPage.transactionTable.isDisplayed());
+    }
+
+    @And("^user clicks on View Checking Account Button$")
+    public void userClicksOnViewCheckingAccountButton() {
+       checkingAccountPage.viewCheckingAccountButton.click();
     }
 }

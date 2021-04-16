@@ -42,6 +42,12 @@ public class CheckingAccountPage {
 
     @FindBy (id = "transactionTable")
     public WebElement transactionTable;
+
+    @FindBy (xpath = "//small[contains(text(),'Account Number')][1]")
+    public WebElement accountNumberText;
+
+    @FindBy(id = "view-checking-menu-item")
+    public WebElement viewCheckingAccountButton;
 }
 
 
